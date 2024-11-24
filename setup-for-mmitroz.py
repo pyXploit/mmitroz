@@ -30,12 +30,12 @@ def check_send_requested(request,client):
         file = open(f'{mmitroz_variables.files.get(requested_file)[0]}','r')
         content = file.read()
         file.close()
-        client.sendall((f'HTTP/1.1 200 OK\nContent-Type: {mmitroz_variables.files.get(requested_file)[1]}\n\n'+content).encode())
+        client.sendall((f'''HTTP/1.1 200 OK\nContent-Type: {mmitroz_variables.files.get(requested_file)[1]}\n\n'''+content).encode())
     else :
         file = open(f'{mmitroz_variables.notfound}','r')
         content = file.read()
         file.close()
-        client.sendall(('HTTP/1.1 404 Not Found\n\n'+content).encode())
+        client.sendall(('''HTTP/1.1 404 Not Found\n\n'''+content).encode())
 
 def accept_client(server):
     while True:
